@@ -15,3 +15,11 @@
 - requirement.txt => 실제 베포할 때 사용
 - requirement.dev.txt => 개발하고 연습할 떄 사용 (파이썬 패키지 관리)
 - 실전 : 패키지 의존성 관리 => 버전관리, 패키지들 간의 관계 관리
+
+- docker-compose run --rm app sh -c 'python manage.py runserver'
+
+*3/15 주말 공부*
+- 도커 배운 것 정리
+- 유튜브(인기 급상승) 데이터베이스 모델 구조 고민해오기
+    - user: username(charfield)
+    - 구독은 어떻게 하는지, 좋아요, 싫어요 등등
