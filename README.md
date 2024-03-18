@@ -23,3 +23,26 @@
 - 유튜브(인기 급상승) 데이터베이스 모델 구조 고민해오기
     - user: username(charfield)
     - 구독은 어떻게 하는지, 좋아요, 싫어요 등등
+
+## Youtube API 개발
+
+### 1. 모델(테이블) 구조
+
+(1) users
+- email
+- nickname
+- password
+
+
+만들어야 하는 테이블(모델)
+- users, videos, reactions, comments, subscriptions, common
+- docker-composer run --rm app sh -c 'python manage.py startapp users'
+- docker-composer run --rm app sh -c 'python manage.py startapp videos'
+- docker-composer run --rm app sh -c 'python manage.py startapp reactions'
+- docker-composer run --rm app sh -c 'python manage.py startapp comments'
+- docker-composer run --rm app sh -c 'python manage.py startapp subscriptions'
+- docker-composer run --rm app sh -c 'python manage.py startapp common'
+
+### Custom User Model Create
+
+- TDD => 개발 및 디버깅 시간을 엄청나게 줄일 수 있습니다. PDB(Python Debugger)
