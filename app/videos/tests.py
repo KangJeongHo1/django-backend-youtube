@@ -31,7 +31,7 @@ class VideoAPITestCase(APITestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.headers['content-type'], 'application/json')
-        self.assertTrue(len[res.data] > 0)
+        self.assertTrue(len(res.data) > 0)
 
         # title 컬럼이 응답 데이터에 잘 들어가 있는지
         for video in res.data:

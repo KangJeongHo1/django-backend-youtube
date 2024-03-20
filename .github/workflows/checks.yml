@@ -21,3 +21,19 @@ jobs:
         run: docker-compose run --rm app sh -c "python manage.py test"
       - name: Lint # pep8 파이썬 코드 스타일 가이드 준수 여부 검사
         run: docker-compose run --rm app sh -c "flake8"
+
+
+# Github Action?
+# Github에 일이 발생해서 Github가 행동하는것
+#   - Push: 코드를 Github를 올리는 행위
+#     * Test코드 돌리기
+#       - Push된 코드가 Test코드를 통과 했는지
+#     * Flake8 실행
+#       - Flake8 실행 후 코드 맞추기
+
+#   - PR: 어떤 사람이 다른 Branch에서 코드 작업을
+#     * Test코드 실행
+#     * Flake8 실행
+
+#   - Merge: 특정 브랜치(기능 개발)를 다른 브렌치(메인 브렌치) 코드에 합치는 일
+#   

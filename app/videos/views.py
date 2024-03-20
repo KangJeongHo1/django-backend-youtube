@@ -15,7 +15,7 @@ from rest_framework import status
 # [DELETE]: X
 
 class VideoList(APIView):
-    def get(self):
+    def get(self, request):
         videos = Video.objects.all() # QuerySet[Video, Video, Video, Video]
         # 직렬화 (Object -> Json) - Serializer
 
@@ -28,7 +28,7 @@ class VideoList(APIView):
         user_data = request.data # Json -> Object(역직렬화)
         serializer = VideoSerializer(data=user_data)
 
-        if serializer.is_vaild():
+        if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -90,5 +90,5 @@
 
 ## DRF 세팅
 - DjangoRestframework
-- drf-spectacular / swagguer-ui, redoc / requirements.txt 추가
+- drf-spectacular / swagger-ui, redoc / requirements.txt 추가
 - docker-compose build
