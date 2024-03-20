@@ -40,12 +40,31 @@ class VideoList(APIView):
 # [PUT]: 특정 비디오 업데이트
 # [DELETE]: 특접 비디오 삭제
 
-class VideoDetail():
-    def get():
-        pass
+from rest_framework.exceptions import NotFound
 
-    def put():
-        pass
+class VideoDetail(APIView):
 
-    def delete():
-        pass
+    def get(self, request, pk): # api/v1/vvideo/{pk}
+        try:
+            video = Video.objects.get(pk=pk)
+        except Video.DoesNotExist:
+            raise NotFound
+        
+        serializer = VideoSerializer(video) # Object -> JSON
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        video = Video.objects.get(pk=pk) # db에서 불러온 데이터
+        user_data = request.data # 유저가 보낸 데이터
+
+        serializer = VideoSerializer(video, user_data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data)
+
+    def delete(self, requset, pk):
+        video = Video.objects.get(pk=pk)
+        video.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
