@@ -21,6 +21,8 @@ class Video(CommonModel):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    
+
 # User:Video = 1:N
     # => User : Video,  Video, Video, Video = O
     # => Video : User, User, User = X
