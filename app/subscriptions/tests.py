@@ -15,6 +15,16 @@ class SubscriptTestCase(APITestCase):
 
         self.client.login(email='test1', password='qw123123')
 
+    def test_sub_list_get(self):
+        Subscription.objects.create(subscriber=self.user1, subscribed_to=self.user2)
+
+        url = reverse('sub-list')
+        res = self.client.get(url)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(len(res.data), 1)
+
+        self.assertEqual(res. data[0]['subscribed_to'], self.user2.id)
 
     # 구독 버튼 테스트
     # [POST] api/v1_sub

@@ -41,15 +41,29 @@ DJANGO_SYSTEM_APPS = [
 ]
 
 CUSTOM_USER_APPS = [
-    'users.apps.UsersConfig', # label을 커스텀 할 때 Config로 불러온다.
     'rest_framework',
     'drf_spectacular',
+    'channels',
+    'chat.apps.ChatConfig', # label을 커스텀 할 때 Config로 불러온다.
+    'users.apps.UsersConfig', 
     'videos.apps.VideosConfig',
     'comments.apps.CommentsConfig',
+    'reactions.apps.ReactionsConfig',
     'subscriptions.apps.SubscriptionsConfig'
 ]
 
 INSTALLED_APPS = CUSTOM_USER_APPS + DJANGO_SYSTEM_APPS
+
+# Channels를 사용하기 위한 설정
+ASGI_APPLICATION = 'app.route.application' # Socket (비동기 처리) + HTTP(동기)
+# => FAST API (비동기) + (동기)
+# HTTP - http://
+# SOCKET - ws://, Hand Shake 양방향 통신이 가능해진다. Low Overhead, Frame
+# STREAMING - 영상 파일은 어떻게 보낼까? TCP/UDP, 3 ways hand Shake
+
+WSGI_APPLICATION = 'app.wsgi.application' # HTTP Base - REST API (동기 처리)
+
+# 동기와 비동기
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+
 
 
 # Database
@@ -144,4 +158,10 @@ AUTH_USER_MODEL = 'users.User' # users 폴더에 User 모델 찾기
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }

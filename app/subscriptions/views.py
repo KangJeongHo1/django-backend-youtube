@@ -6,6 +6,11 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 
 class SubscriptionList(APIView):
+    def get(self, request):
+        subs = Subscription.objects.filter(subscriber=request.user)
+        # objects -> json
+        serializer = SubSerializer(subs, many=True)
+        return Response(serializer.data)
     def post(self, request):
         user_data = request.data # json -> object (Serializer)
         serializer = SubSerializer(data=user_data)

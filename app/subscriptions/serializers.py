@@ -12,3 +12,4 @@ class SubSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("You can't subscribe to yourself")
 
         return data
+    
