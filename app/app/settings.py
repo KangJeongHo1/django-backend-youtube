@@ -41,6 +41,7 @@ DJANGO_SYSTEM_APPS = [
 ]
 
 CUSTOM_USER_APPS = [
+    'daphne',
     'rest_framework',
     'drf_spectacular',
     'channels',

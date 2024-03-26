@@ -21,7 +21,7 @@ class ChatRoomList(APIView):
         user_data = request.data # 유저가 보내준 데이터를 저장
         serializer = ChatRoomSerializer(data=user_data)
 
-        if serializer.is_vaild(raise_exception=True):
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data) # 데이터 저장 성공
         
@@ -63,6 +63,7 @@ class ChatMessageList(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save(room=chatroom, sender=request.user)
 
-        return Response(serializer.data, 201)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-
+def chat_html(request):
+    return render(request, 'index.html')
