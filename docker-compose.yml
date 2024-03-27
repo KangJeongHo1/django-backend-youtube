@@ -7,7 +7,7 @@ version: "3.11"
 # docker-compose: 프론트엔드, 백엔드, DB, NginX
 services:
   # 첫 번째 컨테이너 : Django
-  app: # Django
+  app:
     build:
       context: .
       args:
