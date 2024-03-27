@@ -167,3 +167,5 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+STATIC_URL = 'static/'
