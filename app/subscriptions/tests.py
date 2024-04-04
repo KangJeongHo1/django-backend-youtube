@@ -24,10 +24,10 @@ class SubscriptTestCase(APITestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data), 1)
 
-        self.assertEqual(res. data[0]['subscribed_to'], self.user2.id)
+        self.assertEqual(res.data[0]['subscribed_to'], self.user2.id)
 
     # 구독 버튼 테스트
-    # [POST] api/v1_sub
+    # [POST] api/v1/sub
     def test_sub_list_post(self):
         url = reverse('sub-list')
 

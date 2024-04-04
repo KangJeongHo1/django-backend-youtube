@@ -24,7 +24,7 @@ from .models import Subscription
 class SubscriptionDetail(APIView):
     def get(self, request, pk):
         # api/v1/sub/{pk} -> 1번 유저가 구독한 사람들의 리스트가 궁금.
-        subs = Subscription.objects.filter(subscribed_to=pk) # objects -< json
+        subs = Subscription.objects.filter(subscribed_to=pk) # objects -> json
         serializer = SubSerializer(subs, many=True)
 
         return Response(serializer.data)
